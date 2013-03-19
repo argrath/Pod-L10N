@@ -1,5 +1,7 @@
 package Pod::L10N::Model;
 
+use Carp;
+
 sub decode {
     my $ss = $_[0];
     $ss =~ s/\n{3,}/\n\n/g;
@@ -36,7 +38,7 @@ sub decode {
 	    $f = 2;
 	    if($c == 0){
 		my ($en1, $jp1) = @{pop @enjp};
-		die "$en1\n--\n$jp1\n";
+		croak "end without begin\n$en1\n--\n$jp1\n";
 	    }
 	    next;
 	}
