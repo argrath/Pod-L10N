@@ -1,0 +1,50 @@
+Revision history for Perl extension Pod::L10N.
+
+0.07    Thu Jul  22 17:52:18 JST 2010
+
+	- fix bug that head with X<> cannot substitute correctly
+
+0.06    Thu Jul   1 20:19:50 JST 2010
+
+	- adjust test for Non-Unix
+
+0.05    Thu Jun  19 23:40:42 JST 2009
+
+	- adjust test for pre-5.8
+	- more support for =encoding
+	- fix bug about headings with formattings codes
+
+0.04    Thu Jun  5 18:53:26 JST 2009
+
+	- add pod
+
+0.03_02 Thu Jun  5 00:57:10 JST 2009
+
+	- eliminate some warnings
+
+0.03_01 Thu Jun  4 00:23:12 JST 2009
+
+	- change base to Pod::Html 1.09_04
+	- add tests from Pod::Html
+
+0.03    Thu May 28 15:53:36 JST 2009
+
+	- release
+
+0.02_02 Thu May 28 00:35:52 JST 2009
+
+	- skip some tests
+
+0.02_01 Wed May 27 17;11:52 JST 2009
+
+	- adjust some tests
+
+0.02    Wed May 27 02:28:18 JST 2009
+
+	- add =item-substitution
+	- suppress link to non-exist modules
+	- add some tests
+
+0.01    Tue Jul 30 02:40:54 JST 2008
+
+	- initial release (without tests)
