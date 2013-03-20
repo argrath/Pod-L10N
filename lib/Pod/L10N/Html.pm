@@ -385,6 +385,23 @@ sub pod2htmll10n {
         $tdstyle= '';
     }
 
+    my $input;
+    unless (@ARGV && $ARGV[0]) {
+        if ($Podfile and $Podfile ne '-') {
+            $input = $Podfile;
+        } else {
+            $input = '-'; # XXX: make a test case for this
+        }
+    } else {
+        $Podfile = $ARGV[0];
+        $input = *ARGV;
+    }
+
+    my ($content, $encoding) = arrange($Podfile);
+    if(!defined $encoding){
+        $encoding = 'utf-8';
+    }
+
     # header/footer block
     my $block = $Header ? <<END_OF_BLOCK : '';
 <table border="0" width="100%" cellspacing="0" cellpadding="3">
@@ -401,7 +418,7 @@ END_OF_BLOCK
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title>$Title</title>$csslink
-<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta http-equiv="content-type" content="text/html; charset=$encoding" />
 <link rev="made" href="mailto:$Config{perladmin}" />
 </head>
 
@@ -416,22 +433,10 @@ $block
 </html>
 HTMLFOOT
 
-    my $input;
-    unless (@ARGV && $ARGV[0]) {
-        if ($Podfile and $Podfile ne '-') {
-            $input = $Podfile;
-        } else {
-            $input = '-'; # XXX: make a test case for this
-        }
-    } else {
-        $Podfile = $ARGV[0];
-        $input = *ARGV;
-    }
-
     warn "Converting input file $Podfile\n" if $Verbose;
 #    $parser->parse_file($input);
-    $parser->parse_string_document(arrange($Podfile));
-    $parser->html_charset($parser->encoding());
+    $parser->parse_string_document($content);
+#    $parser->html_charset($parser->encoding());
 
     # Write output to file
     $Htmlfile = "-" unless $Htmlfile; # stdout
@@ -442,6 +447,7 @@ HTMLFOOT
     } else {
         open $fhout, ">-";
     }
+    binmode $fhout, ":encoding($encoding)";
     print $fhout $output;
     close $fhout or die "Failed to close $Htmlfile: $!";
     chmod 0644, $Htmlfile unless $Htmlfile eq '-';
@@ -716,16 +722,17 @@ sub arrange {
     my $fn = shift;
     my $base;
     my $ret;
-    {
-	open my $f1, '<', $fn or die "$!";
-	my @slurp = (<$f1>);
-	close $f1;
-	my $sl = join '', @slurp;
-	$base = Pod::L10N::Model::decode($sl);
-    }
+    my $encoding;
+
+    $base = Pod::L10N::Model::decode_file($fn);
 
     for (@$base){
 	my($o, $t) = @$_;
+	if($o =~ /^=encoding (.+)/){
+	    $encoding = $1;
+	    $ret .= $o . "\n\n";
+	    next;
+	}
 	if($o =~ /^=/){
 	    if(defined $t){
 		$t =~ /\((.+)\)/;
@@ -743,7 +750,7 @@ sub arrange {
 	$ret .= "\n\n";
     }
 
-    return $ret;
+    return ($ret, $encoding);
 }
 
 package Pod::Simple::XHTML::LocalPodLinks;
