@@ -2,6 +2,15 @@ package Pod::L10N::Model;
 
 use Carp;
 
+sub decode_file {
+    my $fn = shift;
+    open my $f1, '<', $fn or die "$!";
+    my @slurp = (<$f1>);
+    close $f1;
+    my $sl = join '', @slurp;
+    return decode($sl);
+}
+
 sub decode {
     my $ss = $_[0];
     $ss =~ s/\n{3,}/\n\n/g;
