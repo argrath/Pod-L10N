@@ -9,7 +9,7 @@ WriteMakefile(
     ($] >= 5.005 ?     ## Add these new keywords supported since 5.005
       (
 	   ABSTRACT       => 'handle POD with L10N',
-	   EXE_FILES      => [qw(bin/pod2htmll10n)],
+	   EXE_FILES      => [qw(script/pod2htmll10n)],
            LICENSE        => 'perl',
 	   AUTHOR         => 'SHIRAKATA Kentaro <argrath@cpan.org>') : ()),
 );

@@ -1,4 +1,4 @@
-bin/pod2htmll10n
+script/pod2htmll10n
 Changes
 lib/Pod/L10N/Format.pod
 lib/Pod/L10N/Html.pm
