@@ -770,6 +770,24 @@ __PACKAGE__->_accessorize(
  'verbose',
 );
 
+
+sub idify {
+    my ($self, $t, $not_unique) = @_;
+    for ($t) {
+        s/<[^>]+>//g;            # Strip HTML.
+        s/&[^;]+;//g;            # Strip entities.
+        s/^\s+//; s/\s+$//;      # Strip white space.
+        s/^([^a-zA-Z]+)$/pod$1/; # Prepend "pod" if no valid chars.
+        s/^[^a-zA-Z]+//;         # First char must be a letter.
+        s/[^-a-zA-Z0-9_:.]+/-/g; # All other chars must be valid.
+        s/[-:.]+$//;             # Strip trailing punctuation.
+    }
+    return $t if $not_unique;
+    my $i = '';
+    $i++ while $self->{ids}{"$t$i"}++;
+    return "$t$i";
+}
+
 sub resolve_pod_page_link {
     my ($self, $to, $section) = @_;
 
