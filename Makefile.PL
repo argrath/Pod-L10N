@@ -5,7 +5,12 @@ use ExtUtils::MakeMaker;
 WriteMakefile(
     NAME              => 'Pod::L10N',
     VERSION_FROM      => 'lib/Pod/L10N/Html.pm', # finds $VERSION
-    PREREQ_PM         => {}, # e.g., Module::Name => 1.1
+    PREREQ_PM         => {
+	'Pod::Simple' => '3.18',
+    }, # e.g., Module::Name => 1.1
+    TEST_REQUIRES     => {
+	'Test::Exception' => 0,
+    },
     ($] >= 5.005 ?     ## Add these new keywords supported since 5.005
       (
 	   ABSTRACT       => 'handle POD with L10N',
