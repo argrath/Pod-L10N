@@ -27,8 +27,7 @@
    "prereqs" : {
       "build" : {
          "requires" : {
-            "ExtUtils::MakeMaker" : "0",
-            "Test::Exception" : "0"
+            "ExtUtils::MakeMaker" : "0"
          }
       },
       "configure" : {
@@ -49,6 +48,11 @@
       "runtime" : {
          "requires" : {
             "Pod::Simple" : "3.18"
+         }
+      },
+      "test" : {
+         "requires" : {
+            "Test::Exception" : "0"
          }
       }
    },
