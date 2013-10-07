@@ -3,7 +3,7 @@ use strict;
 require Exporter;
 
 use vars qw($VERSION @ISA @EXPORT @EXPORT_OK);
-$VERSION = '0.99';
+$VERSION = '1.00';
 @ISA = qw(Exporter);
 @EXPORT = qw(pod2htmll10n htmlify);
 @EXPORT_OK = qw(anchorify);
