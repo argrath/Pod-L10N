@@ -15,13 +15,10 @@
    "name" : "Pod-L10N",
    "no_index" : {
       "directory" : [
-         "t",
-         "xt",
-         "inc",
-         "share",
-         "eg",
-         "examples",
-         "author"
+         "t"
+      ],
+      "package" : [
+         "Pod::Simple::XHTML::LocalPodLinks"
       ]
    },
    "prereqs" : {
@@ -69,6 +66,7 @@
    },
    "version" : "1.00",
    "x_contributors" : [
+      "Neil Bowers <neil@bowers.com>",
       "SHIRAKATA Kentaro <argrath@ub32.org>"
    ]
 }
