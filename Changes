@@ -2,6 +2,11 @@ Revision history for Perl module Pod::L10N
 
 {{$NEXT}}
 
+1.00_01 2013-10-10T08:19:13Z
+
+	- change timestamp (#1)
+	- add private packages to no_index
+
 1.00 2013-10-07T07:48:49Z
 
 	- change base to Pod::Simple
