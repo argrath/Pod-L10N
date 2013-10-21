@@ -11,9 +11,8 @@ Pod::L10N - Pod with L10N
 
 =head1 AUTHOR
 
-SHIRAKATA Kentaro <argrath@cpan.org>
+SHIRAKATA Kentaro E<lt>argrath@cpan.orgE<gt>
 
 =head1 LICENSE
 
-This library is free software; you can redistribute it and/or modify it under
-the same terms as Perl itself.
+This program is distributed under the Artistic License.
