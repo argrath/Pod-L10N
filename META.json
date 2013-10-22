@@ -1,7 +1,7 @@
 {
-   "abstract" : "Pod with L10N\r",
+   "abstract" : "Pod with L10N",
    "author" : [
-      "SHIRAKATA Kentaro <argrath@cpan.org>\r"
+      "SHIRAKATA Kentaro <argrath@cpan.org>"
    ],
    "dynamic_config" : 0,
    "generated_by" : "Minilla/v0.7.3, CPAN::Meta::Converter version 2.132661",
