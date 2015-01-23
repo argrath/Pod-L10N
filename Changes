@@ -2,7 +2,10 @@ Revision history for Perl module Pod::L10N
 
 {{$NEXT}}
 
+1.02 2015-01-23T19:14:45Z
+
 	- adjust tests for Pod-Simple-3.29
+	- add tests
 
 1.01 2013-10-21T18:15:52Z
 

@@ -1,7 +1,7 @@
 package Pod::L10N;
 
 use vars qw($VERSION);
-$VERSION = '1.01';
+$VERSION = '1.02';
 
 =pod
 
