@@ -2,6 +2,8 @@ Revision history for Perl module Pod::L10N
 
 {{$NEXT}}
 
+	- fix substhead.t
+
 1.02 2015-01-23T19:14:45Z
 
 	- adjust tests for Pod-Simple-3.29

@@ -30,7 +30,7 @@ __DATA__
 <title>a title</title>
 <link rel="stylesheet" href="style.css" type="text/css" />
 <meta http-equiv="content-type" content="text/html; charset=euc-jp" />
-<link rev="made" href="mailto:shira@wheezy.(none)" />
+<link rev="made" href="mailto:[PERLADMIN]" />
 </head>
 
 <body id="_podtop_">
