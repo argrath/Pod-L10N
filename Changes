@@ -2,6 +2,8 @@ Revision history for Perl module Pod::L10N
 
 {{$NEXT}}
 
+1.03 2015-01-23T19:57:50Z
+
 	- fix substhead.t
 
 1.02 2015-01-23T19:14:45Z
