@@ -219,7 +219,7 @@ sub pod2htmll10n {
     }
 
     # set options for the parser
-    my $parser = Pod::Simple::XHTML::LocalPodLinks->new();
+    my $parser = Pod::L10N::Html::LocalPodLinks->new();
     $parser->codes_in_verbatim(0);
     $parser->anchor_items(1); # the old Pod::Html always did
     $parser->backlink($Backlink); # linkify =head1 directives
@@ -628,7 +628,7 @@ sub arrange {
     return ($ret, $encoding);
 }
 
-package Pod::Simple::XHTML::LocalPodLinks;
+package Pod::L10N::Html::LocalPodLinks;
 use strict;
 use warnings;
 use parent 'Pod::Simple::XHTML';
