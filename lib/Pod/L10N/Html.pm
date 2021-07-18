@@ -247,14 +247,12 @@ sub pod2htmll10n {
     my $bodyid = $Backlink ? ' id="_podtop_"' : '';
 
     my $csslink = '';
-    my $bodystyle = ' style="background-color: white"';
-    my $tdstyle = ' style="background-color: #cccccc"';
+    my $tdstyle = ' style="background-color: #cccccc; color: #000"';
 
     if ($Css) {
         $csslink = qq(\n<link rel="stylesheet" href="$Css" type="text/css" />);
         $csslink =~ s,\\,/,g;
         $csslink =~ s,(/.):,$1|,;
-        $bodystyle = '';
         $tdstyle= '';
     }
 
@@ -295,7 +293,7 @@ END_OF_BLOCK
 <link rev="made" href="mailto:$Config{perladmin}" />
 </head>
 
-<body$bodyid$bodystyle>
+<body$bodyid>
 $block
 HTMLHEAD
 
@@ -332,9 +330,14 @@ sub usage {
     my $podfile = shift;
     warn "$0: $podfile: @_\n" if @_;
     die <<END_OF_USAGE;
-Usage:  $0 --help --htmlroot=<name> --infile=<name> --outfile=<name>
-           --podpath=<name>:...:<name> --podroot=<name> --cachedir=<name>
-           --recurse --verbose --index --norecurse --noindex
+Usage:  $0 --help --htmldir=<name> --htmlroot=<URL>
+           --infile=<name> --outfile=<name>
+           --podpath=<name>:...:<name> --podroot=<name>
+           --cachedir=<name> --flush --recurse --norecurse
+           --quiet --noquiet --verbose --noverbose
+           --index --noindex --backlink --nobacklink
+           --header --noheader --poderrors --nopoderrors
+           --css=<URL> --title=<name>
 
   --[no]backlink  - turn =head1 directives into links pointing to the top of
                       the page (off by default).
@@ -372,7 +375,7 @@ sub parse_command_line {
     my ($opt_backlink,$opt_cachedir,$opt_css,$opt_flush,$opt_header,
         $opt_help,$opt_htmldir,$opt_htmlroot,$opt_index,$opt_infile,
         $opt_outfile,$opt_poderrors,$opt_podpath,$opt_podroot,
-        $opt_quiet,$opt_recurse,$opt_title,$opt_verbose,$opt_libpods);
+        $opt_quiet,$opt_recurse,$opt_title,$opt_verbose);
 
     unshift @ARGV, split ' ', $Config{pod2html} if $Config{pod2html};
     my $result = GetOptions(
@@ -386,7 +389,6 @@ sub parse_command_line {
                        'htmlroot=s' => \$opt_htmlroot,
                        'index!'     => \$opt_index,
                        'infile=s'   => \$opt_infile,
-                       'libpods=s'  => \$opt_libpods, # deprecated
                        'outfile=s'  => \$opt_outfile,
                        'poderrors!' => \$opt_poderrors,
                        'podpath=s'  => \$opt_podpath,
@@ -402,7 +404,6 @@ sub parse_command_line {
     $opt_help = "";                     # just to make -w shut-up.
 
     @Podpath  = split(":", $opt_podpath) if defined $opt_podpath;
-    warn "--libpods is no longer supported" if defined $opt_libpods;
 
     $Backlink  =          $opt_backlink   if defined $opt_backlink;
     $Cachedir  = _unixify($opt_cachedir)  if defined $opt_cachedir;
@@ -588,6 +589,7 @@ sub _unixify {
     $full_path = File::Spec::Unix->catfile(File::Spec::Unix->catdir(@dirs),
                                            $file);
     $full_path =~ s|^\/|| if $^O eq 'MSWin32'; # C:/foo works, /C:/foo doesn't
+    $full_path =~ s/\^\././g if $^O eq 'VMS'; # unescape dots
     return $full_path;
 }
 
@@ -629,7 +631,7 @@ sub arrange {
 package Pod::Simple::XHTML::LocalPodLinks;
 use strict;
 use warnings;
-use base 'Pod::Simple::XHTML';
+use parent 'Pod::Simple::XHTML';
 
 use File::Spec;
 use File::Spec::Unix;

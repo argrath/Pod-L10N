@@ -15,7 +15,8 @@
    "name" : "Pod-L10N",
    "no_index" : {
       "directory" : [
-         "t"
+         "t",
+         "testdir"
       ],
       "package" : [
          "Pod::Simple::XHTML::LocalPodLinks",

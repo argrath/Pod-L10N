@@ -2,6 +2,8 @@ Revision history for Perl module Pod::L10N
 
 {{$NEXT}}
 
+	- upgrade base version to 1.2202
+
 1.03 2015-01-23T19:57:50Z
 
 	- fix substhead.t
