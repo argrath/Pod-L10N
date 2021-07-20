@@ -67,6 +67,9 @@ sub convert_n_test {
     if (Pod::Simple->VERSION > 3.28) {
         $expect =~ s/\n\n(some html)/$1/m;
         $expect =~ s{(TESTING FOR AND BEGIN</h1>)\n\n}{$1}m;
+    } else {
+        $expect =~ s{(intermediate text</p>)}{$1\n\n}m;
+        $expect =~ s/\n\n(some text)/$1/m;
     }
 
 	# result
