@@ -28,7 +28,7 @@ Pod::L10N::Html - module to convert pod files to HTML with L10N
 =head1 SYNOPSIS
 
     use Pod::L10N::Html;
-    pod2html([options]);
+    pod2htmll10n([options]);
 
 =head1 DESCRIPTION
 
@@ -41,7 +41,7 @@ Pod::L10N::Html do some more works to print translated text pretty well.
 
 =head1 ADDITIONAL FEATURES
 
-Additional features from Pod::Html 1.1512 are:
+Additional features from L<Pod::Html> 1.2202 are:
 
 =over
 
@@ -53,9 +53,9 @@ Support L<Pod::L10N::Format> extended format.
 
 =head1 FUNCTIONS
 
-=head2 pod2html
+=head2 pod2htmll10n
 
-    pod2html("pod2html",
+    pod2htmll10n("pod2htmll10n",
              "--podpath=lib:ext:pod:vms",
              "--podroot=/usr/src/perl",
              "--htmlroot=/perl/nmanual",
@@ -83,10 +83,10 @@ Uses C<$Config{pod2html}> to setup default options.
 
 =head1 AUTHOR
 
-Pod::L10N::Html is based on L<Pod::Html> Version 1.1512 written by
+C<Pod::L10N::Html> is based on L<Pod::Html> Version 1.2202 written by
 Marc Green, E<lt>marcgreen@cpan.orgE<gt>. 
 
-Modification to Pod::L10N::Html is written by SHIRAKATA Kentaro,
+Modification to C<Pod::L10N::Html> is written by SHIRAKATA Kentaro,
 E<lt>argrath@cpan.orgE<gt>.
 
 =head1 SEE ALSO
