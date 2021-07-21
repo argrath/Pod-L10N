@@ -3,6 +3,7 @@ Revision history for Perl module Pod::L10N
 {{$NEXT}}
 
 	- fix test failure on Pod::Simple older than 3.28
+	- ban some buggy versions of Pod::Simple
 
 1.04 2021-07-19T07:26:59Z
 

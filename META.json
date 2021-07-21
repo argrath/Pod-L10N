@@ -45,7 +45,7 @@
       },
       "runtime" : {
          "requires" : {
-            "Pod::Simple" : "3.18"
+            "Pod::Simple" : ">= 3.18, != 3.26, != 3.30"
          }
       },
       "test" : {
