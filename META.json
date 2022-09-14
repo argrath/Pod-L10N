@@ -46,7 +46,8 @@
       "runtime" : {
          "requires" : {
             "Pod::L10N::Model" : "0",
-            "Pod::Simple" : ">= 3.18, != 3.26, != 3.30"
+            "Pod::Simple" : ">= 3.18, != 3.26, != 3.30",
+            "perl" : "5.010000"
          }
       },
       "test" : {
