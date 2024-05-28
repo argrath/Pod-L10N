@@ -757,43 +757,13 @@ sub resolve_pod_page_link {
         # then $self->htmlroot eq '' (by definition of htmlfileurl) so
         # $self->htmldir needs to be prepended to link to get the absolute path
         # that will be relativized
-        $url = relativize_url(
+        $url = Pod::L10N::Html::relativize_url(
 	    File::Spec::Unix->catdir(Pod::L10N::Html::_unixify($self->htmldir), $url),
             $self->htmlfileurl # already unixified
         );
     }
 
     return $url . ".html$section";
-}
-
-#
-# relativize_url - convert an absolute URL to one relative to a base URL.
-# Assumes both end in a filename.
-#
-sub relativize_url {
-    my ($dest, $source) = @_;
-
-    # Remove each file from its path
-    my ($dest_volume, $dest_directory, $dest_file) =
-        File::Spec::Unix->splitpath( $dest );
-    $dest = File::Spec::Unix->catpath( $dest_volume, $dest_directory, '' );
-
-    my ($source_volume, $source_directory, $source_file) =
-        File::Spec::Unix->splitpath( $source );
-    $source = File::Spec::Unix->catpath( $source_volume, $source_directory, '' );
-
-    my $rel_path = '';
-    if ($dest ne '') {
-       $rel_path = File::Spec::Unix->abs2rel( $dest, $source );
-    }
-
-    if ($rel_path ne '' && substr( $rel_path, -1 ) ne '/') {
-        $rel_path .= "/$dest_file";
-    } else {
-        $rel_path .= "$dest_file";
-    }
-
-    return $rel_path;
 }
 
 sub _end_head {
@@ -840,6 +810,38 @@ sub end_item_text   {
     $_[0]{'scratch'} .= qq{<dt$dt_id>$text</dt>\n<dd>};
     $_[0]{'in_dd'}[ $_[0]{'dl_level'} ] = 1;
     $_[0]->emit;
+}
+
+package Pod::L10N::Html;
+
+#
+# relativize_url - convert an absolute URL to one relative to a base URL.
+# Assumes both end in a filename.
+#
+sub relativize_url {
+    my ($dest, $source) = @_;
+
+    # Remove each file from its path
+    my ($dest_volume, $dest_directory, $dest_file) =
+        File::Spec::Unix->splitpath( $dest );
+    $dest = File::Spec::Unix->catpath( $dest_volume, $dest_directory, '' );
+
+    my ($source_volume, $source_directory, $source_file) =
+        File::Spec::Unix->splitpath( $source );
+    $source = File::Spec::Unix->catpath( $source_volume, $source_directory, '' );
+
+    my $rel_path = '';
+    if ($dest ne '') {
+       $rel_path = File::Spec::Unix->abs2rel( $dest, $source );
+    }
+
+    if ($rel_path ne '' && substr( $rel_path, -1 ) ne '/') {
+        $rel_path .= "/$dest_file";
+    } else {
+        $rel_path .= "$dest_file";
+    }
+
+    return $rel_path;
 }
 
 1;
