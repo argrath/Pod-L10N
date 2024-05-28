@@ -27,7 +27,9 @@ convert_n_test("feature2", "misc pod-html features 2",
 like($warn,
     qr(
 	\Acaching\ directories\ for\ later\ use\n
-	Converting\ input\ file\ \S+[/\\\]]feature2\.pod\n\z	
+    Converting\ input\ file\ \S+[/\\\]]feature2\.pod\n
+    Cannot\ find\ file\ "crossref\.\*"\ directly\ under\ podpath,\ cannot\ find
+    \ suitable\ replacement:\ link\ remains\ unresolved\.\n\z
     )x,
     "misc pod-html --verbose warnings");
 
