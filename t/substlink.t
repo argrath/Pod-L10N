@@ -13,17 +13,17 @@ my $cwd = cwd();
 
 TODO: {
     local $TODO = 'not implemented';
-    convert_n_test("substlink", "substitute link", 
- "--backlink",
- "--css=style.css",
- "--header", # no styling b/c of --ccs
- "--htmldir=". catdir($cwd, 't'),
- "--noindex",
- "--podpath=t",
- "--podroot=$cwd",
- "--title=a title",
- "--quiet",
- );
+    convert_n_test("substlink", "substitute link", {
+        backlink        => 1,
+        css             => 'style.css',
+        header          => 1, # no styling b/c of --ccs
+        htmldir         => catdir($cwd, 't'),
+        noindex         => 1,
+        podpath         => 't',
+        podroot         => $cwd,
+        title           => 'a title',
+        quiet           => 1,
+    } );
 }
 
 __DATA__
