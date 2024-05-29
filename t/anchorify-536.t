@@ -1,7 +1,11 @@
 use strict;
 use warnings;
-use Pod::L10N::Html::Util qw( anchorify relativize_url );
+use Pod::L10N::Html qw( anchorify relativize_url );
+my ($revision,$version,$subversion) = split /\./, sprintf("%vd",$^V);
 use Test::More;
+unless ($version == 35 or $version == 36) {
+    plan skip_all => "Needed only during 5.36";
+}
 
 my @filedata;
 {
@@ -36,14 +40,11 @@ my %expected = map { $_ => 1 } qw(
     Has_QuestionMark
     Has_Hyphen_And_Space
 );
-TODO: {
-    local $TODO = 'not converted to L10N';
 is_deeply(
     \%heads,
     \%expected,
     "Got expected POD heads"
 );
-}
 
 {
     # adapted from 'installhtml'
