@@ -43,7 +43,6 @@ is_deeply(
     \%expected,
     "Got expected POD heads"
 );
-}
 
 {
     # adapted from 'installhtml'
@@ -55,6 +54,7 @@ is_deeply(
     is($url, $expected_url, "anchorify() returned expected value");
     my $relativized_url = relativize_url( $url, "$file.html" );
     is($relativized_url, $expected_relativized_url, "relativize_url() returned expected value");
+}
 }
 
 done_testing;
