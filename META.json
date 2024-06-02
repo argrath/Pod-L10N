@@ -4,7 +4,7 @@
       "SHIRAKATA Kentaro <argrath@cpan.org>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Minilla/v3.1.12, CPAN::Meta::Converter version 2.150010",
+   "generated_by" : "Minilla/v3.1.15, CPAN::Meta::Converter version 2.150010",
    "license" : [
       "artistic_1"
    ],
@@ -52,7 +52,9 @@
       },
       "test" : {
          "requires" : {
-            "Test::Exception" : "0"
+            "File::Path" : "2.06_05",
+            "Test::Exception" : "0",
+            "Test::Simple" : "0.88"
          }
       }
    },
@@ -64,7 +66,7 @@
       "homepage" : "https://github.com/argrath/Pod-L10N",
       "repository" : {
          "type" : "git",
-         "url" : "git://github.com/argrath/Pod-L10N.git",
+         "url" : "https://github.com/argrath/Pod-L10N.git",
          "web" : "https://github.com/argrath/Pod-L10N"
       }
    },
@@ -73,6 +75,6 @@
       "Neil Bowers <neil@bowers.com>",
       "SHIRAKATA Kentaro <argrath@ub32.org>"
    ],
-   "x_serialization_backend" : "JSON::PP version 4.02",
+   "x_serialization_backend" : "JSON::PP version 4.06",
    "x_static_install" : 1
 }
