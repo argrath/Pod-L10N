@@ -2,6 +2,8 @@ Revision history for Perl module Pod::L10N
 
 {{$NEXT}}
 
+	- upgrade upstream to 1.33 (5.36.0-based)
+
 1.07 2022-09-16T09:45:36Z
 
 	- ad-hoc fix for parallel tests
