@@ -546,6 +546,9 @@ sub _set_expected_html {
         $expect =~ s{(intermediate text</p>)}{$1\n\n}m;
         $expect =~ s/\n\n(some text)/$1/m;
     }
+    if (Pod::Simple->VERSION < 3.46) {
+        $expect =~ s/blockquote/ul/mg;
+    }
     return $expect;
 }
 
