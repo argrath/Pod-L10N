@@ -2,7 +2,7 @@ package Pod::L10N::Html;
 use strict;
 use Exporter 'import';
 
-our $VERSION = '1.07';
+our $VERSION = '1.08';
 $VERSION = eval $VERSION;
 our @EXPORT = qw(pod2htmll10n htmlify);
 our @EXPORT_OK = qw(anchorify relativize_url);
