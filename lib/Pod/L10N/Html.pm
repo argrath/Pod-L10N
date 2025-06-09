@@ -4,8 +4,7 @@ use Exporter 'import';
 
 our $VERSION = '1.08';
 $VERSION = eval $VERSION;
-our @EXPORT = qw(pod2htmll10n htmlify);
-our @EXPORT_OK = qw(anchorify relativize_url);
+our @EXPORT = qw(pod2html);
 
 use Config;
 use Cwd;
@@ -68,18 +67,6 @@ Support L<Pod::L10N::Format> extended format.
              "--recurse",
              "--infile=foo.pod",
              "--outfile=/perl/nmanual/foo.html");
-
-See L<Pod::Html> for details.
-
-=head2 htmlify
-
-    htmlify($heading);
-
-See L<Pod::Html> for details.
-
-=head2 anchorify
-
-    anchorify(@heading);
 
 See L<Pod::Html> for details.
 

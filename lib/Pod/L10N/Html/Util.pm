@@ -253,7 +253,14 @@ that C<anchorify()> is not exported by default.
 
 sub anchorify {
     my ($anchor) = @_;
-    $anchor = htmlify($anchor);
+    $anchor =~ s/"/_/g;                 # Replace double quotes with underscores
+    $anchor =~ s/_$//;                  # ... but strip any final underscore
+    $anchor =~ s/[<>&']//g;             # Strip the remaining HTML special characters
+    $anchor =~ s/^\s+//; s/\s+$//;      # Strip white space.
+    $anchor =~ s/^([^a-zA-Z]+)$/pod$1/; # Prepend "pod" if no valid chars.
+    $anchor =~ s/^[^a-zA-Z]+//;         # First char must be a letter.
+    $anchor =~ s/[^-a-zA-Z0-9_:.]+/-/g; # All other chars must be valid.
+    $anchor =~ s/[-:.]+$//;             # Strip trailing punctuation.
     $anchor =~ s/\W/_/g;
     return $anchor;
 }
