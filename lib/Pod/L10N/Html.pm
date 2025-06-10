@@ -444,6 +444,7 @@ sub refine_parser {
         $csslink = qq(\n<link rel="stylesheet" href="$self->{Css}" type="text/css" />);
         $csslink =~ s,\\,/,g;
         $csslink =~ s,(/.):,$1|,;
+#/ # (for VSCode highlighter)
         $tdstyle= '';
     }
 
