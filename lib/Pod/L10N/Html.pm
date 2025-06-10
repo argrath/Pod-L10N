@@ -519,27 +519,27 @@ sub arrange {
     $base = Pod::L10N::Model::decode_file($fn);
 
     for (@$base){
-	my($o, $t) = @$_;
-	if($o =~ /^=encoding (.+)/){
-	    $encoding = $1;
-	    $ret .= $o . "\n\n";
-	    next;
-	}
-	if($o =~ /^=/){
-	    if(defined $t){
-		$t =~ /\((.+)\)/;
-		$ret .= $o . '@@@@@@@@@@' . $1;
-	    } else {
-		$ret .= $o;
-	    }
-	} else {
-	    if(defined $t){
-		$ret .= $t;
-	    } else {
-		$ret .= $o;
-	    }
-	}
-	$ret .= "\n\n";
+        my($o, $t) = @$_;
+        if($o =~ /^=encoding (.+)/){
+            $encoding = $1;
+            $ret .= $o . "\n\n";
+            next;
+        }
+        if($o =~ /^=/){
+            if(defined $t){
+                $t =~ /\((.+)\)/;
+                $ret .= $o . '@@@@@@@@@@' . $1;
+            } else {
+                $ret .= $o;
+            }
+        } else {
+            if(defined $t){
+                $ret .= $t;
+            } else {
+                $ret .= $o;
+            }
+        }
+        $ret .= "\n\n";
     }
 
     return ($ret, $encoding);
@@ -654,7 +654,7 @@ sub _end_head {
 
     my ($orig, $trans) = split /@@@@@@@@@@/, $_[0]{scratch};
     if(!defined $trans){
-	$trans = $orig;
+        $trans = $orig;
     }
     my $id = $_[0]->idify($orig);
     my $text = $trans;
@@ -669,7 +669,7 @@ sub _end_head {
 sub end_item_text   {
     my ($orig, $trans) = split /@@@@@@@@@@/, $_[0]{scratch};
     if(!defined $trans){
-	$trans = $orig;
+        $trans = $orig;
     }
 
     # idify and anchor =item content if wanted
