@@ -4,7 +4,7 @@ use Exporter 'import';
 
 our $VERSION = '1.09';
 $VERSION = eval $VERSION;
-our @EXPORT = qw(pod2html);
+our @EXPORT = qw(pod2htmll10n);
 
 use Config;
 use Cwd;
