@@ -2,7 +2,7 @@ package Pod::L10N::Html::Util;
 use strict;
 use Exporter 'import';
 
-our $VERSION = 1.09; # Please keep in synch with lib/Pod/Html.pm
+our $VERSION = 1.10; # Please keep in synch with lib/Pod/Html.pm
 $VERSION = eval $VERSION;
 our @EXPORT_OK = qw(
     anchorify

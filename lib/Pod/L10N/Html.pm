@@ -2,7 +2,7 @@ package Pod::L10N::Html;
 use strict;
 use Exporter 'import';
 
-our $VERSION = '1.09';
+our $VERSION = '1.10';
 $VERSION = eval $VERSION;
 our @EXPORT = qw(pod2htmll10n);
 
